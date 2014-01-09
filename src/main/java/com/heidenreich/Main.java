@@ -12,6 +12,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 //Hunter Heidenreich 2013
+//https://github.com/filthyharold/rpgGame <--Look at this later
 public class Main extends JFrame implements Runnable, MouseListener {
 	Container con = getContentPane();
 	Thread t = new Thread(this);
@@ -25,11 +26,11 @@ public class Main extends JFrame implements Runnable, MouseListener {
 	byte[][] red, blue, green;
 
 	public Main() {
-		alternate = new Color(20, 12, 54);
+		alternate = new Color(127, 12, 54);
 		con.setLayout(new FlowLayout());
 		setBounds(X, Y, SCREEN_WIDTH, SCREEN_HEIGHT);
 		setVisible(true);
-		setTitle("");
+		setTitle("Heidenreich Image Program");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		t.start();
 		red = new byte[SCREEN_WIDTH][SCREEN_HEIGHT];
