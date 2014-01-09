@@ -323,4 +323,7 @@ public class Main extends JFrame implements Runnable, MouseListener {
 	public void mouseReleased(MouseEvent arg0) {
 	}
 
+	public boolean returnTrue(boolean tr) {
+		return tr;
+	}
 }
