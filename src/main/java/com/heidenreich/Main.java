@@ -13,12 +13,13 @@ import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 //Hunter Heidenreich 2013
 //https://github.com/filthyharold/rpgGame <--Look at this later
+
 public class Main extends JFrame implements Runnable, MouseListener {
 	Container con = getContentPane();
 	Thread t = new Thread(this);
 	Color alternate;
 	Point target = new Point(0, 0);
-	int stuff = 640;
+	int stuff = 640, thickness = 13;
 	private final int SCREEN_WIDTH = 640,
 			SCREEN_HEIGHT = 640,
 			X = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width - SCREEN_WIDTH) / 2,
@@ -63,140 +64,152 @@ public class Main extends JFrame implements Runnable, MouseListener {
 
 	private void drawFromPoint() {
 		if (target.getX() - stuff > 0 && stuff < 640) {
-			red[(int) target.getX() - stuff][(int) target.getY()] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - stuff][(int) target.getY() - 1] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - stuff][(int) target.getY() + 1] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - stuff][(int) target.getY() - 2] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - stuff][(int) target.getY() + 2] = (byte) alternate
-					.getRed();
+			for (int i = 1; i < thickness; i += 2) {
+				red[(int) target.getX() - stuff][(int) target.getY()] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - stuff][(int) target.getY() - i] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - stuff][(int) target.getY() + i] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - stuff][(int) target.getY() - (i + 1)] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - stuff][(int) target.getY() + (i + 1)] = (byte) alternate
+						.getRed();
 
-			blue[(int) target.getX() - stuff][(int) target.getY()] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - stuff][(int) target.getY() - 1] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - stuff][(int) target.getY() + 1] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - stuff][(int) target.getY() - 2] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - stuff][(int) target.getY() + 2] = (byte) alternate
-					.getBlue();
+				blue[(int) target.getX() - stuff][(int) target.getY()] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - stuff][(int) target.getY() - i] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - stuff][(int) target.getY() + i] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - stuff][(int) target.getY() - (i + 1)] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - stuff][(int) target.getY() + (i + 1)] = (byte) alternate
+						.getBlue();
 
-			green[(int) target.getX() - stuff][(int) target.getY()] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - stuff][(int) target.getY() - 1] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - stuff][(int) target.getY() + 1] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - stuff][(int) target.getY() - 2] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - stuff][(int) target.getY() + 2] = (byte) alternate
-					.getGreen();
+				green[(int) target.getX() - stuff][(int) target.getY()] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - stuff][(int) target.getY() - i] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - stuff][(int) target.getY() + i] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - stuff][(int) target.getY()
+						- (i + 1)] = (byte) alternate.getGreen();
+				green[(int) target.getX() - stuff][(int) target.getY()
+						+ (i + 1)] = (byte) alternate.getGreen();
+			}
+
 		}
 		if (target.getX() + stuff < 640 && stuff < 640) {
-			red[(int) target.getX() + stuff][(int) target.getY()] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + stuff][(int) target.getY() - 1] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + stuff][(int) target.getY() + 1] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + stuff][(int) target.getY() - 2] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + stuff][(int) target.getY() + 2] = (byte) alternate
-					.getRed();
+			for (int i = 0; i < thickness; i += 2) {
+				red[(int) target.getX() + stuff][(int) target.getY()] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + stuff][(int) target.getY() - i] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + stuff][(int) target.getY() + i] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + stuff][(int) target.getY() - (i + 1)] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + stuff][(int) target.getY() + (i + 1)] = (byte) alternate
+						.getRed();
 
-			blue[(int) target.getX() + stuff][(int) target.getY()] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + stuff][(int) target.getY() - 1] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + stuff][(int) target.getY() + 1] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + stuff][(int) target.getY() - 2] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + stuff][(int) target.getY() + 2] = (byte) alternate
-					.getBlue();
+				blue[(int) target.getX() + stuff][(int) target.getY()] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + stuff][(int) target.getY() - i] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + stuff][(int) target.getY() + i] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + stuff][(int) target.getY() - (i + 1)] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + stuff][(int) target.getY() + (i + 1)] = (byte) alternate
+						.getBlue();
 
-			green[(int) target.getX() + stuff][(int) target.getY()] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + stuff][(int) target.getY() - 1] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + stuff][(int) target.getY() + 1] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + stuff][(int) target.getY() - 2] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + stuff][(int) target.getY() + 2] = (byte) alternate
-					.getGreen();
+				green[(int) target.getX() + stuff][(int) target.getY()] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() + stuff][(int) target.getY() - i] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() + stuff][(int) target.getY() + i] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() + stuff][(int) target.getY()
+						- (i + 1)] = (byte) alternate.getGreen();
+				green[(int) target.getX() + stuff][(int) target.getY()
+						+ (i + 1)] = (byte) alternate.getGreen();
+			}
+
 		}
 		if (target.getY() - stuff > 0 && stuff < 640) {
-			red[(int) target.getX()][(int) target.getY() - stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - 1][(int) target.getY() - stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + 1][(int) target.getY() - stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - 2][(int) target.getY() - stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + 2][(int) target.getY() - stuff] = (byte) alternate
-					.getRed();
+			for (int i = 0; i < thickness; i += 2) {
+				red[(int) target.getX()][(int) target.getY() - stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - i][(int) target.getY() - stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + i][(int) target.getY() - stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - (i + 1)][(int) target.getY() - stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + (i + 1)][(int) target.getY() - stuff] = (byte) alternate
+						.getRed();
 
-			blue[(int) target.getX()][(int) target.getY() - stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - 1][(int) target.getY() - stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + 1][(int) target.getY() - stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - 2][(int) target.getY() - stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + 2][(int) target.getY() - stuff] = (byte) alternate
-					.getBlue();
+				blue[(int) target.getX()][(int) target.getY() - stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - i][(int) target.getY() - stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + i][(int) target.getY() - stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - (i + 1)][(int) target.getY() - stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + (i + 1)][(int) target.getY() - stuff] = (byte) alternate
+						.getBlue();
 
-			green[(int) target.getX()][(int) target.getY() - stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - 1][(int) target.getY() - stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + 1][(int) target.getY() - stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - 2][(int) target.getY() - stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + 2][(int) target.getY() - stuff] = (byte) alternate
-					.getGreen();
+				green[(int) target.getX()][(int) target.getY() - stuff] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - i][(int) target.getY() - stuff] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() + i][(int) target.getY() - stuff] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - (i + 1)][(int) target.getY()
+						- stuff] = (byte) alternate.getGreen();
+				green[(int) target.getX() + (i + 1)][(int) target.getY()
+						- stuff] = (byte) alternate.getGreen();
+			}
+
 		}
 		if (target.getY() + stuff < 640 && stuff < 640) {
-			red[(int) target.getX()][(int) target.getY() + stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - 1][(int) target.getY() + stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + 1][(int) target.getY() + stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() - 2][(int) target.getY() + stuff] = (byte) alternate
-					.getRed();
-			red[(int) target.getX() + 2][(int) target.getY() + stuff] = (byte) alternate
-					.getRed();
+			for (int i = 0; i < thickness; i += 2) {
+				red[(int) target.getX()][(int) target.getY() + stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - i][(int) target.getY() + stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + i][(int) target.getY() + stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() - (i + 1)][(int) target.getY() + stuff] = (byte) alternate
+						.getRed();
+				red[(int) target.getX() + (i + 1)][(int) target.getY() + stuff] = (byte) alternate
+						.getRed();
 
-			blue[(int) target.getX()][(int) target.getY() + stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - 1][(int) target.getY() + stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + 1][(int) target.getY() + stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() - 2][(int) target.getY() + stuff] = (byte) alternate
-					.getBlue();
-			blue[(int) target.getX() + 2][(int) target.getY() + stuff] = (byte) alternate
-					.getBlue();
+				blue[(int) target.getX()][(int) target.getY() + stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - i][(int) target.getY() + stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + i][(int) target.getY() + stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() - (i + 1)][(int) target.getY() + stuff] = (byte) alternate
+						.getBlue();
+				blue[(int) target.getX() + (i + 1)][(int) target.getY() + stuff] = (byte) alternate
+						.getBlue();
 
-			green[(int) target.getX()][(int) target.getY() + stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - 1][(int) target.getY() + stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + 1][(int) target.getY() + stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() - 2][(int) target.getY() + stuff] = (byte) alternate
-					.getGreen();
-			green[(int) target.getX() + 2][(int) target.getY() + stuff] = (byte) alternate
-					.getGreen();
+				green[(int) target.getX()][(int) target.getY() + stuff] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - i][(int) target.getY() + stuff] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() + i][(int) target.getY() + stuff] = (byte) alternate
+						.getGreen();
+				green[(int) target.getX() - (i + 1)][(int) target.getY()
+						+ stuff] = (byte) alternate.getGreen();
+				green[(int) target.getX() + (i + 1)][(int) target.getY()
+						+ stuff] = (byte) alternate.getGreen();
+			}
+
 		}
 		stuff++;
 	}
@@ -232,80 +245,127 @@ public class Main extends JFrame implements Runnable, MouseListener {
 			blue[arg0.getX()][arg0.getY()] = (byte) alternate.getBlue();
 			green[arg0.getX()][arg0.getY()] = (byte) alternate.getGreen();
 
-			red[arg0.getX() - 1][arg0.getY()] = (byte) alternate.getRed();
-			blue[arg0.getX() - 1][arg0.getY()] = (byte) alternate.getBlue();
-			green[arg0.getX() - 1][arg0.getY()] = (byte) alternate.getGreen();
-			red[arg0.getX() + 1][arg0.getY()] = (byte) alternate.getRed();
-			blue[arg0.getX() + 1][arg0.getY()] = (byte) alternate.getBlue();
-			green[arg0.getX() + 1][arg0.getY()] = (byte) alternate.getGreen();
-			red[arg0.getX()][arg0.getY() - 1] = (byte) alternate.getRed();
-			blue[arg0.getX()][arg0.getY() - 1] = (byte) alternate.getBlue();
-			green[arg0.getX()][arg0.getY() - 1] = (byte) alternate.getGreen();
-			red[arg0.getX()][arg0.getY() + 1] = (byte) alternate.getRed();
-			blue[arg0.getX()][arg0.getY() + 1] = (byte) alternate.getBlue();
-			green[arg0.getX()][arg0.getY() + 1] = (byte) alternate.getGreen();
-			red[arg0.getX() - 1][arg0.getY() + 1] = (byte) alternate.getRed();
-			blue[arg0.getX() - 1][arg0.getY() + 1] = (byte) alternate.getBlue();
-			green[arg0.getX() - 1][arg0.getY() + 1] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() - 1][arg0.getY() - 1] = (byte) alternate.getRed();
-			blue[arg0.getX() - 1][arg0.getY() - 1] = (byte) alternate.getBlue();
-			green[arg0.getX() - 1][arg0.getY() - 1] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() + 1][arg0.getY() + 1] = (byte) alternate.getRed();
-			blue[arg0.getX() + 1][arg0.getY() + 1] = (byte) alternate.getBlue();
-			green[arg0.getX() + 1][arg0.getY() + 1] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() + 1][arg0.getY() - 1] = (byte) alternate.getRed();
-			blue[arg0.getX() + 1][arg0.getY() - 1] = (byte) alternate.getBlue();
-			green[arg0.getX() + 1][arg0.getY() - 1] = (byte) alternate
-					.getGreen();
+			for (int i = 1; i < thickness; i += 2) {
+				red[arg0.getX() - i][arg0.getY()] = (byte) alternate.getRed();
+				blue[arg0.getX() - i][arg0.getY()] = (byte) alternate.getBlue();
+				green[arg0.getX() - i][arg0.getY()] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() - i][arg0.getY()] = (byte) alternate.getRed();
+				blue[arg0.getX() - i][arg0.getY()] = (byte) alternate.getBlue();
+				green[arg0.getX() - i][arg0.getY()] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + i][arg0.getY()] = (byte) alternate.getRed();
+				blue[arg0.getX() + i][arg0.getY()] = (byte) alternate.getBlue();
+				green[arg0.getX() + i][arg0.getY()] = (byte) alternate
+						.getGreen();
+				red[arg0.getX()][arg0.getY() - i] = (byte) alternate.getRed();
+				blue[arg0.getX()][arg0.getY() - i] = (byte) alternate.getBlue();
+				green[arg0.getX()][arg0.getY() - i] = (byte) alternate
+						.getGreen();
+				red[arg0.getX()][arg0.getY() + i] = (byte) alternate.getRed();
+				blue[arg0.getX()][arg0.getY() + i] = (byte) alternate.getBlue();
+				green[arg0.getX()][arg0.getY() + i] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() - i][arg0.getY() + i] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - i][arg0.getY() + i] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - i][arg0.getY() + i] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() - i][arg0.getY() - i] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - i][arg0.getY() - i] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - i][arg0.getY() - i] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + i][arg0.getY() + i] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + i][arg0.getY() + i] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + i][arg0.getY() + i] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + i][arg0.getY() - i] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + i][arg0.getY() - i] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + i][arg0.getY() - i] = (byte) alternate
+						.getGreen();
 
-			red[arg0.getX() - 2][arg0.getY()] = (byte) alternate.getRed();
-			blue[arg0.getX() - 2][arg0.getY()] = (byte) alternate.getBlue();
-			green[arg0.getX() - 2][arg0.getY()] = (byte) alternate.getGreen();
-			red[arg0.getX() + 2][arg0.getY()] = (byte) alternate.getRed();
-			blue[arg0.getX() + 2][arg0.getY()] = (byte) alternate.getBlue();
-			green[arg0.getX() + 2][arg0.getY()] = (byte) alternate.getGreen();
-			red[arg0.getX()][arg0.getY() - 2] = (byte) alternate.getRed();
-			blue[arg0.getX()][arg0.getY() - 2] = (byte) alternate.getBlue();
-			green[arg0.getX()][arg0.getY() - 2] = (byte) alternate.getGreen();
-			red[arg0.getX()][arg0.getY() + 2] = (byte) alternate.getRed();
-			blue[arg0.getX()][arg0.getY() + 2] = (byte) alternate.getBlue();
-			green[arg0.getX()][arg0.getY() + 2] = (byte) alternate.getGreen();
-			red[arg0.getX() - 2][arg0.getY() + 2] = (byte) alternate.getRed();
-			blue[arg0.getX() - 2][arg0.getY() + 2] = (byte) alternate.getBlue();
-			green[arg0.getX() - 2][arg0.getY() + 2] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() - 2][arg0.getY() - 2] = (byte) alternate.getRed();
-			blue[arg0.getX() - 2][arg0.getY() - 2] = (byte) alternate.getBlue();
-			green[arg0.getX() - 2][arg0.getY() - 2] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() + 2][arg0.getY() + 2] = (byte) alternate.getRed();
-			blue[arg0.getX() + 2][arg0.getY() + 2] = (byte) alternate.getBlue();
-			green[arg0.getX() + 2][arg0.getY() + 2] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() + 2][arg0.getY() - 2] = (byte) alternate.getRed();
-			blue[arg0.getX() + 2][arg0.getY() - 2] = (byte) alternate.getBlue();
-			green[arg0.getX() + 2][arg0.getY() - 2] = (byte) alternate
-					.getGreen();
+				red[arg0.getX() - (i + 1)][arg0.getY()] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - (i + 1)][arg0.getY()] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - (i + 1)][arg0.getY()] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + (i + 1)][arg0.getY()] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + (i + 1)][arg0.getY()] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + (i + 1)][arg0.getY()] = (byte) alternate
+						.getGreen();
+				red[arg0.getX()][arg0.getY() - (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX()][arg0.getY() - (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX()][arg0.getY() - (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX()][arg0.getY() + (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX()][arg0.getY() + (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX()][arg0.getY() + (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() - (i + 1)][arg0.getY() + (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - (i + 1)][arg0.getY() + (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - (i + 1)][arg0.getY() + (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() - (i + 1)][arg0.getY() - (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - (i + 1)][arg0.getY() - (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - (i + 1)][arg0.getY() - (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + (i + 1)][arg0.getY() + (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + (i + 1)][arg0.getY() + (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + (i + 1)][arg0.getY() + (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + (i + 1)][arg0.getY() - (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + (i + 1)][arg0.getY() - (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + (i + 1)][arg0.getY() - (i + 1)] = (byte) alternate
+						.getGreen();
 
-			red[arg0.getX() - 2][arg0.getY() + 1] = (byte) alternate.getRed();
-			blue[arg0.getX() - 2][arg0.getY() + 1] = (byte) alternate.getBlue();
-			green[arg0.getX() - 2][arg0.getY() + 1] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() + 1][arg0.getY() - 2] = (byte) alternate.getRed();
-			blue[arg0.getX() + 1][arg0.getY() - 2] = (byte) alternate.getBlue();
-			green[arg0.getX() + 1][arg0.getY() - 2] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() - 1][arg0.getY() + 2] = (byte) alternate.getRed();
-			blue[arg0.getX() - 1][arg0.getY() + 2] = (byte) alternate.getBlue();
-			green[arg0.getX() - 1][arg0.getY() + 2] = (byte) alternate
-					.getGreen();
-			red[arg0.getX() + 2][arg0.getY() - 1] = (byte) alternate.getRed();
-			blue[arg0.getX() + 2][arg0.getY() - 1] = (byte) alternate.getBlue();
-			green[arg0.getX() + 2][arg0.getY() - 1] = (byte) alternate
-					.getGreen();
+				red[arg0.getX() - (i + 1)][arg0.getY() + i] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - (i + 1)][arg0.getY() + i] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - (i + 1)][arg0.getY() + i] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + i][arg0.getY() - (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + i][arg0.getY() - (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + i][arg0.getY() - (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() - i][arg0.getY() + (i + 1)] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() - i][arg0.getY() + (i + 1)] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() - i][arg0.getY() + (i + 1)] = (byte) alternate
+						.getGreen();
+				red[arg0.getX() + (i + 1)][arg0.getY() - i] = (byte) alternate
+						.getRed();
+				blue[arg0.getX() + (i + 1)][arg0.getY() - i] = (byte) alternate
+						.getBlue();
+				green[arg0.getX() + (i + 1)][arg0.getY() - i] = (byte) alternate
+						.getGreen();
+			}
+
 			target = arg0.getPoint();
 			stuff = 0;
 		}
