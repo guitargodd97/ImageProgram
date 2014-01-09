@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
-
+//Hunter Heidenreich 2013
 public class Main extends JFrame implements Runnable, MouseListener {
 	Container con = getContentPane();
 	Thread t = new Thread(this);
