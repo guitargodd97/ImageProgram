@@ -1,5 +1,6 @@
 package main.java.com.heidenreich;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -7,15 +8,19 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 //Hunter Heidenreich 2013
 //https://github.com/filthyharold/rpgGame <--Look at this later
 
 public class Main extends JFrame implements Runnable, MouseListener {
-	Container con = getContentPane();
 	Thread t = new Thread(this);
 	Color alternate;
 	Point target = new Point(0, 0);
@@ -25,12 +30,33 @@ public class Main extends JFrame implements Runnable, MouseListener {
 			X = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().width - SCREEN_WIDTH) / 2,
 			Y = (java.awt.Toolkit.getDefaultToolkit().getScreenSize().height - SCREEN_HEIGHT) / 2;
 	byte[][] red, blue, green;
+	JMenuBar menuBar;
+	JMenu menu;
+	JMenuItem file;
 
 	public Main() {
 		alternate = new Color(127, 12, 54);
-		con.setLayout(new FlowLayout());
-		setBounds(X, Y, SCREEN_WIDTH, SCREEN_HEIGHT);
+		menuBar = new JMenuBar();
+		menuBar.setSize(SCREEN_WIDTH, 50);
+		menuBar.setLocation(new Point(0, 0));
+		menu = new JMenu("File...");
+		menu.setSize(100, 40);
+		menu.setLocation(0, 0);
+		file = new JMenuItem("Exit");
+		file.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				System.exit(0);
+			}
+		});
+		file.setSize(100, 40);
+		file.setLocation(0, 0);
+		menu.add(file);
+		menuBar.add(menu);
+		add(menuBar);
+		pack();
 		setVisible(true);
+		setLayout(new BorderLayout());
+		setBounds(X, Y, SCREEN_WIDTH, SCREEN_HEIGHT);
 		setTitle("Heidenreich Image Program");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		t.start();
